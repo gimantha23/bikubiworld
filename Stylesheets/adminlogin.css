@@ -1,0 +1,22 @@
+@charset "utf-8";
+.login_box{
+	background-color:#09F;
+	}
+	
+input[type="submit"],input[type="reset"]{
+	
+	height:25px;
+	background:#06F;
+	color:#fff;
+	font-size:16px;
+	border-radius:15px;
+	}
+	
+input[type="submit"]:hover,input[type="reset"]:hover{
+	
+	height:25px;
+	background:#09F;
+	color:#fff;
+	font-size:16px;
+	border-radius:15px;
+	}

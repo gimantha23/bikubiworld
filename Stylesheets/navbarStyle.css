@@ -1,0 +1,43 @@
+@charset "utf-8";
+/* CSS Document */
+ul{
+	margin:0px;
+	padding:0px;
+	list-style:none;	
+	}
+ul li{
+	
+	float:left;
+	width:165px;
+	height:40px;
+	background-color:#000;
+	opacity:0.8;
+	line-height:40px;
+	text-align:center;
+	font-size:18px;
+	}
+ul li a{
+	text-decoration:none;
+	color:#FFF;
+	display:block;
+	}
+ul li a:hover{
+	background-color:#9F9FA2;
+	}
+ul li ul li{
+	display:none;
+	}
+ul li:hover ul li{
+	display:block;
+	}
+
+.logo {
+	float: left;
+	height: 60px;
+	width: 200px;
+}
+.navbarTop {
+	float:right;
+	height: 60px;
+	width: 800px;
+}

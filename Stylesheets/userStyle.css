@@ -1,0 +1,23 @@
+@charset "utf-8";
+/* CSS Document */
+body
+{
+	background:#9BD6F4;
+	}
+.mainbody
+{
+	width:1000px;
+	height:1000px;
+	margin-left:auto;
+	margin-right:auto;
+	}
+.profile p {
+	font-family: Arial, Helvetica, sans-serif;
+	text-align:center;
+}
+p.items
+{
+	text-align:left;
+	font-size:16px;
+	font-weight:300;
+	}

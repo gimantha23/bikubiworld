@@ -1,0 +1,11 @@
+
+	.mainbody{
+			height:1800px;
+			width:1400px;
+		}
+	.product-box{
+		display:inline-block;
+		float:left;
+		
+		}
+
