@@ -33,7 +33,7 @@ if(!isset($_SESSION["pno"]))
                 $s=0;
                   if(mysqli_num_rows($rowsql)>0)
                 {  
-echo"
+                echo"
                     <table align='center' border='1'>
                     <tr>
                         <th>Image</th>
@@ -45,7 +45,7 @@ echo"
                         <th>Remove</th>
                     </tr>
                     <tr>
-";
+                    ";
                 
                       while($row=mysqli_fetch_array($rowsql))
                         {
@@ -61,31 +61,27 @@ echo"
                           $aqty=$row2['aqty'];
                           $q=$row['cartqty'];
                           $p=$row1['pprice'];
-echo"
+                        echo"
                         <td><img src='".$row1['pimage']."' width='85' height='85' /> </td>
                         <td>".$row1['pname']."</td>
                         <td>".$row1['pprice']."</td>
                         <td>".$row['cartqty']."</td>
                         <td>".$tot=$p*$q."</td>
-";
+                        ";
                         $s=$s+$p*$q;
 
-echo"                  
-                        <td><input type='number' name='".$row['pid']."' min='0' max='".$row2['aqty']."' step='1' ></td>
+                        echo"                  
+                        <td><input type='number' name='".$row['pid']."' min='1' max='".$row2['aqty']."' step='1' value='' ></td>
                       
                         <td>
                             <input type='submit' name='update".$row['pid']."' value='Update cart'><br>
                             <input type='submit' name='remove".$row['pid']."' value='Remove item'>
-";
+                        ";
                             if (isset($_POST['update'.$row['pid']]))
                             { 
                               $eqty=$_POST[$row['pid']];
                               $cqty=$row['cartqty'];
-                                if($eqty == $cqty)
-                                  {
-                                    
-                                  }
-                                else if($eqty == 0)
+                                if($eqty == 0)
                                   {
                                     $cqty=0-$eqty;
                                   }
@@ -101,19 +97,19 @@ echo"
                               mysqli_query($con,"INSERT INTO `cart`(`cartno`, `cno`, `pid`, `qty`) VALUES (NULL,'".$_SESSION["cno"]."',".$row['pid'].",'-".$row['cartqty']."')");
                             }
                             
-echo"                      
+                        echo"                      
                         </td>
                     </tr>
-";
+                        ";
                         }
                       }
-echo"  
+                    echo"  
                     <tr>
                         <td>
                           <input type='submit' name='btnShop' value='Continue shopping'>
                         </td>
                     </tr> 
-";       
+                    ";       
               ?>
               </form>
               <?php
@@ -124,7 +120,7 @@ echo"
             </table>
 
             <?php
-echo"
+            echo"
             <table align='center' border='0'>
               <tr>
                 <th colspan='2'>Cart totals</th>
