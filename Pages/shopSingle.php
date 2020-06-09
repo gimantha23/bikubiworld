@@ -184,7 +184,7 @@ if(!isset($_SESSION["pno"]))
             echo"<span class='fa fa-star'></span>";
             }
             echo"<br>";
-            echo"<textarea name='r' id='r' cols='30' rows='5'> $rowb[rtext] </textarea> <br>";
+            echo"<textarea name='r' id='r' cols='30' rows='5' readonly> $rowb[rtext] </textarea> <br>";
             if(isset($_SESSION['cno']))
               {
                 echo"<p> Posted by: $rowb[cno] on $rowb[date] </p> ";
