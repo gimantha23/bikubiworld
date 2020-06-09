@@ -10,26 +10,13 @@ if(!isset($_SESSION["pno"]))
   <head>
     <meta charset="utf-8">
     <title>Product page</title>
-    <style>
-      span{
-        font-size: 20px;
-      }
-      .rating {
-        unicode-bidi: bidi-override;
-        direction: rtl;
-        position:absolute;
-      }
-      .rating > span {
-        display: inline-block;
-        position: relative;
-        width: 1.1em;
-      }
-      .rating > span:hover:before,
-      .rating > span:hover ~ span:before {
-        content: "\2605";
-        position: absolute;
-      }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../Stylesheets/ratingStyle.css">
+  <style>
+    .checked {
+    color: orange;
+  }
+  </style>
   </head>
   <body>
     <form action="shopSingle.php" method="post">
@@ -135,19 +122,24 @@ if(!isset($_SESSION["pno"]))
         if(isset($_SESSION["cno"]))
           {
   echo"
-          <div>
-            write a review
-            <div class='rating'>
-              <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-            </div>
-            <br><br><br>
-            <textarea name='txtReview' id='txtReview' cols='60' rows='10' maxlength='250'></textarea><br>
-            <input type='submit' name='btnPost' value='Post review'><p>Posting as cno  $_SESSION[cno] </p>
-          <div>  
+            <fieldset class='rating' name='rating'>
+            <legend>Please rate:</legend>
+            <input type='radio' id='star5' name='rating' value='5' /> <label for='star5'>5 stars</label>
+            <input type='radio' id='star4' name='rating' value='4' /> <label for='star4'>4 stars</label>
+            <input type='radio' id='star3' name='rating' value='3' /> <label for='star3'>3 stars</label>
+            <input type='radio' id='star2' name='rating' value='2' /> <label for='star2'>2 stars</label>
+            <input type='radio' id='star1' name='rating' value='1' /> <label for='star1'>1 star</label>
+            </fieldset>
+        <div class='clearfix'></div>
+        Write A Review
+        <div class='clearfix'></div>
+            <textarea name='txtReview' id='txtReview' cols='70' rows='10' maxlength='250'></textarea><br>     
+            <p>Posting as cno  $_SESSION[cno] </p>
+            <input type='submit' name='btnPost' id='btnPost' value='Post review'>
     ";
+    echo"";
          }
     ?>   
-
     <?php 
       if(isset($_POST['btnPost']))
       {
@@ -157,7 +149,8 @@ if(!isset($_SESSION["pno"]))
               die("Error while connecting to database");
               }
         $re=$_POST['txtReview'];
-        $sqla="INSERT INTO `review` (`rno`, `cno`, `pid`, `rtext`,`date`) VALUES (NULL, '".$_SESSION['cno']."', '".$_SESSION['pno']."','".$re."',CURDATE() )";
+        $star=$_POST['rating'];
+        $sqla="INSERT INTO `review` (`rno`, `cno`, `pid`, `rtext`, `rating`, `date`) VALUES (NULL, '".$_SESSION['cno']."', '".$_SESSION['pno']."','".$re."', '".$star."' ,CURDATE() )";
         mysqli_query($con2,$sqla);
       }
     ?>
@@ -180,12 +173,19 @@ if(!isset($_SESSION["pno"]))
         else
         {
           echo"<h3>User reviews</h3>";
-          echo "No reviews yet for this item";
+          echo "No reviews posted yet for this item";
         }
-        while($rowb=mysqli_fetch_array($rowsqlb))
-            {
-              echo"<textarea name='r' id='r' cols='30' rows='5'> $rowb[rtext] </textarea> <br>";
-              if(isset($_SESSION['cno']))
+        while($rowb=mysqli_fetch_array($rowsqlb)){
+            $rating=$rowb['rating'];
+            for ($i=0; $i < $rating ; $i++){
+              echo"<span class='fa fa-star checked'></span>";
+            }
+            for ($i=0; $i < (5-$rating) ; $i++){
+            echo"<span class='fa fa-star'></span>";
+            }
+            echo"<br>";
+            echo"<textarea name='r' id='r' cols='30' rows='5'> $rowb[rtext] </textarea> <br>";
+            if(isset($_SESSION['cno']))
               {
                 echo"<p> Posted by: $rowb[cno] on $rowb[date] </p> ";
               }
