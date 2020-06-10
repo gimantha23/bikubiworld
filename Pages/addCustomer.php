@@ -87,7 +87,7 @@ session_start();
 		 <label for="txtAddress">Address</label>
 	 	</td>
      <td>
-			 <input name="txtAddress" id="txtAddress" type="text" required placeholder="enter street address"><br>
+			 <input name="txtAddress" id="txtAddress" type="text" required placeholder="enter street address(Do not use commas)"><br>
 			 <input name="txtAddress1" id="txtAddress1" type="text" required placeholder="enter city"><br>
 			 <input name="txtAddress2" id="txtAddress2" type="text" required placeholder="enter state/province/region"><br>
 			 <input name="txtAddress3" id="txtAddress3" type="text" required placeholder="enter zip code"><br>
@@ -152,6 +152,8 @@ session_start();
 						$a3=$_POST['txtAddress2'];
 						$a4=$_POST['txtAddress3'];
 						$address=$a1.",".$a2.",".$a3.",".$a4;
+						// $address = preg_replace('/\s+/', '_', $address);
+
 
 						$con = mysqli_connect("localhost","root","","bikubiworld");
 						if(!$con)
