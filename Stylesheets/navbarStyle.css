@@ -1,43 +1,42 @@
-@charset "utf-8";
-/* CSS Document */
-ul{
-	margin:0px;
-	padding:0px;
-	list-style:none;	
-	}
-ul li{
-	
-	float:left;
-	width:165px;
-	height:40px;
-	background-color:#000;
-	opacity:0.8;
-	line-height:40px;
-	text-align:center;
-	font-size:18px;
-	}
-ul li a{
-	text-decoration:none;
-	color:#FFF;
-	display:block;
-	}
-ul li a:hover{
-	background-color:#9F9FA2;
-	}
-ul li ul li{
-	display:none;
-	}
-ul li:hover ul li{
-	display:block;
-	}
+header {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+	url(../Resources/assets/babyyyyyyyyyyy.png);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    background-attachment: fixed;
+}
 
 .logo {
-	float: left;
-	height: 60px;
-	width: 200px;
+    height: 100px;
+    width: auto;
+    float: left;
+    margin-top: 20px
 }
-.navbarTop {
-	float:right;
-	height: 60px;
-	width: 800px;
+
+.main-nav {
+    float: right;
+    list-style: none;
+    margin-top: 55px;
+}
+
+.main-nav li {
+    display: inline-block;
+    margin-left: 40px;
+}
+
+.main-nav li a:link,
+.main-nav li a:visited{
+    padding: 8px 0;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 90%;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.2s;
+}
+
+.main-nav li a:hover,
+.main-nav li a:active{
+    border-bottom: 2px solid #e67e22;
 }
