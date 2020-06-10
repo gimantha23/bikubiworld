@@ -5,3 +5,13 @@
 .section-products {
     padding: 0;
 }
+
+.box img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.product-feature {
+    margin-bottom: 5px;
+}
